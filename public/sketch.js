@@ -18,22 +18,14 @@ class particle {
     this.posY = random(height);
     this.initialangle = random(0, 4 * PI);
     this.size = random(0, 5); // speed of particle somehow?
-
-
-
-    // radius of particle spiral
-    // chosen so the particles are uniformly spread out in area
     this.radius = sqrt(random(pow(width * 20 / 1, 2)));
-
     this.update = function (time) {
       // x position follows a circle
       let w = 0.5; // angular speed
       let angle = w * time + this.initialangle;
       this.posX = width / 2 + this.radius * sin(angle) + random(-1, 1);
-
       // different size particles fall at slightly different y speeds
       this.posY += sin(this.size, 16) + random(-2, 2);
-
       // delete particle if past end of screen
       if (this.posY > height) {
         let index = particles.indexOf(this);
@@ -54,9 +46,6 @@ class particle {
 //wave constant
 let yoff = -1.0;
 
-// const humidityHeight = 0.5;
-// const humidityHeight = localStorage.setItem("humidityHeight", 0.5);
-
 // font init
 let font;
 let pts;
@@ -70,7 +59,6 @@ function ns(x, y, z, scale_, min_, max_) {
     noise(x * scale_, y * scale_, z * scale_),
     0, 1, min_, max_);
 }
-
 
 function setup() {
   const cnv = createCanvas(windowWidth, windowHeight);
@@ -144,7 +132,6 @@ function draw() {
   fill(20, 120 + sittingTime * 3, 20, 120 - sittingTime * 2);
   push();
   // translate(24, height / 5);
-
   for (let i = 0; i < pts.length; i++) {
     let xoff = ns(pts[i].x, pts[i].y, xz, 0.005, -50, abs(sin(millis() * .0005)) * 100);
     let yoff = ns(pts[i].y, pts[i].x, yz, 0.005, -50, 50);

@@ -25,6 +25,7 @@ import {
   Th,
   Td,
   TableCaption,
+  Text,
 } from "@chakra-ui/react";
 
 const Home = () => {
@@ -43,9 +44,9 @@ const Home = () => {
   }, []);
 
   const initialValue = {
-    humidityHeight: 0.5,
+    humidityHeight: 0.75,
     temperature: 25,
-    particle: 50,
+    particle: 200,
     sittingTime: 0,
   };
 
@@ -64,7 +65,7 @@ const Home = () => {
     minHeight: 300,
   };
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const toggle = () => setIsOpen(!isOpen);
 
   useEffect(() => {
@@ -108,7 +109,7 @@ const Home = () => {
   return (
     <div className="App" style={{ width: "100vw", height: "100vh" }}>
       <div className="dragZone" style={{ width: "100vw", height: "100vh" }}>
-        <Box align="right">
+        <Box align="right" >
           <Button
             m="5"
             size="xs"
@@ -123,7 +124,7 @@ const Home = () => {
 
         {/* floating panel */}
 
-        {JSON.stringify(values)}
+        {/* <Text>{JSON.stringify(values)}</Text> */}
 
         {isOpen && (
           <Rnd
@@ -209,7 +210,7 @@ const Home = () => {
                       <p>Humidity: {values.humidityHeight * 100 - 35}%</p>
                       <Slider
                         aria-label="slider-ex-1"
-                        defaultValue={25}
+                        defaultValue={40}
                         min={0}
                         max={100}
                         onChange={(value) => {
@@ -247,7 +248,7 @@ const Home = () => {
                       <p>Dust Level: {values.particle}μg/㎥</p>
                       <Slider
                         aria-label="slider-ex-1"
-                        defaultValue={50}
+                        defaultValue={200}
                         min={0}
                         max={500}
                         onChange={(value) => {

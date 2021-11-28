@@ -60,6 +60,21 @@ function ns(x, y, z, scale_, min_, max_) {
     0, 1, min_, max_);
 }
 
+// cursor follow eased constant
+let tx = 1;
+let ty = 1;
+let easing = 0.05;
+
+const breakPopUp = () => {
+  textAlign(CENTER, TOP);
+  fill(255, 0, 0, 255);
+  textSize(128);
+  text("Take a Break!!",
+    constrain(width / 2 + random(0, 10), 0, width - textWidth("Break!!")),
+    constrain(height / 2 + random(0, 10), 0, height - 48 + textDescent()));
+}
+
+
 function setup() {
   const cnv = createCanvas(windowWidth, windowHeight);
   cnv.position(0, 0);
@@ -118,15 +133,27 @@ function draw() {
     particle.dustDisplay();
   }
 
+
+  // cursor easing
+  let targetX = mouseX;
+  let dx = targetX - tx;
+  tx += dx * easing;
+
+  let targetY = mouseY;
+  let dy = targetY - ty;
+  ty += dy * easing;
+
   // sittingtime object
   const sittingTime = localStorage.getItem("sittingTime");
   imageMode(CENTER);
   image(focus_image,
-    noise(millis() * .00005) * width + random((sittingTime / 10)),
-    noise(millis() * .00005) * height + random((sittingTime / 10)),
+    tx + random((sittingTime / 10)),
+    ty + random((sittingTime / 10)),
     sittingTime * 7, // max 60 * 7 px
     sittingTime * 7,
   );
+
+
 
   // text morp
   // noStroke();
@@ -142,4 +169,12 @@ function draw() {
   pop();
   xz += 1;
   yz += 1;
+
+  // warning popup
+  if (sittingTime > 1) {
+    breakPopUp();
+  } else {
+    return null;
+  }
+
 }

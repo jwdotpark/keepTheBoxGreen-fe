@@ -25,7 +25,6 @@ import {
   Th,
   Td,
   TableCaption,
-  Text,
 } from "@chakra-ui/react";
 
 const Home = () => {

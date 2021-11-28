@@ -79,7 +79,9 @@ function draw() {
   // green (0,   255, 0, 255)
   // blue  (255, 255, 0, 255)
   //          255           255        255       
-  background((temp * 10 - 200), (temp * 7.5), (temp * 5 - 100), 150);
+  // background((temp * 10 - 200), (temp * 7.5), (temp * 5 - 100), 150);
+  background((temp * 12 - 300), (255 + 150 - temp * 6), (250 - temp * 10), 150);
+
 
   // wave
   fill(0, 0, hum * 200, hum * 200);
@@ -122,8 +124,8 @@ function draw() {
   image(focus_image,
     noise(millis() * .00005) * width + random((sittingTime / 10)),
     noise(millis() * .00005) * height + random((sittingTime / 10)),
-    sittingTime * 15, // max 60 * 15 px
-    sittingTime * 15,
+    sittingTime * 7, // max 60 * 7 px
+    sittingTime * 7,
   );
 
   // text morp

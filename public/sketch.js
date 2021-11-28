@@ -2,46 +2,6 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
 
-// time counter
-// let t = 0
-
-// function createBall(speedX, speedY) {
-//   return {
-//     x: random(10),
-//     y: random(10),
-//     dirX: random(100),
-//     dirY: random(100),
-//     speedX: random(2),
-//     speedY: random(2),
-//     size: random(0, 1),
-//     color: [0, 0, 0, random(255)],
-//     weight: random(1, 10),
-//   };
-// }
-
-// function processBall(b, particleNum) {
-//   // Process a ball, dealing with movement and bouncing
-//   b.x = b.x + b.speedX * b.dirX;
-//   b.y = b.y + b.speedY * b.dirY;
-
-//   if (b.x > width / 2) {
-//     b.dirX = -1;
-//   } else if (b.x < -width / 2) {
-//     b.dirX = 1;
-//   }
-
-//   if (b.y > height / 2) {
-//     b.dirY = -1;
-//   } else if (b.y < -height / 2) {
-//     b.dirY = 1;
-//   }
-
-//   fill(b.color, 10);
-//   strokeWeight(b.weight / 2);
-//   stroke(b.color);
-//   rect(b.x, b.y, b.size);
-// }
-
 let particles = []; // array to hold particle objects
 
 // load image

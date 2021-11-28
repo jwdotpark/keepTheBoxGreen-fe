@@ -283,7 +283,10 @@ const Home = () => {
 
                   </TabPanel>
                   <TabPanel>
-                    <p>okja is cute dog</p>
+                    <p>In Mockup Data Tab, you can change the data manually to see the graphics. Now actual device/server is disconnected because of Azure server being expensive..</p>
+                    <br />
+                    <p>Sitting time counts every 1s for test usage.</p>
+                    <p>After 45s, warning pop up is set to up. Actual usage would be based on an hour as more linear, now it is based on second.</p>
                   </TabPanel>
                 </TabPanels>
               </Tabs>

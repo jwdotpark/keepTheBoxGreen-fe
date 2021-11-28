@@ -171,7 +171,7 @@ function draw() {
   yz += 1;
 
   // warning popup
-  if (sittingTime > 1) {
+  if (sittingTime > 45) {
     breakPopUp();
   } else {
     return null;

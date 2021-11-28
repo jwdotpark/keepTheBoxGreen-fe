@@ -1,3 +1,7 @@
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
 // time counter
 let t = 0
 
@@ -90,9 +94,10 @@ function particle() {
 function setup() {
 
   // default canvas size
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-  let cnv = createCanvas(width, height);
+  // const width = window.innerWidth;
+  // const height = window.innerHeight;
+  // let cnv = createCanvas(width, height);
+  const cnv = createCanvas(windowWidth, windowHeight);
   cnv.position(0, 0);
 
 }

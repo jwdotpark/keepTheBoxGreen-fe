@@ -80,7 +80,7 @@ function draw() {
   // blue  (255, 255, 0, 255)
   //          255           255        255       
   // background((temp * 10 - 200), (temp * 7.5), (temp * 5 - 100), 150);
-  background((temp * 12 - 300), (255 + 150 - temp * 6), (250 - temp * 10), 150);
+  background((temp * 12 - 300), (255 + 100 - temp * 7), (250 - temp * 10), 150);
 
 
   // wave

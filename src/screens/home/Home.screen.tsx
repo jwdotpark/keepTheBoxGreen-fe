@@ -25,6 +25,7 @@ import {
   Th,
   Td,
   TableCaption,
+  Text,
 } from "@chakra-ui/react";
 
 const Home = () => {
@@ -283,10 +284,8 @@ const Home = () => {
 
                   </TabPanel>
                   <TabPanel>
-                    <p>In Mockup Data Tab, you can change the data manually to see the graphics. Now actual device/server is disconnected because of Azure server being expensive..</p>
-                    <br />
-                    <p>Sitting time counts every 1s for test usage.</p>
-                    <p>After 45s, warning pop up is set to up. Actual usage would be based on an hour as more linear, now it is based on second.</p>
+                    <Text align='left'>{" "}In Mockup Data Tab, you can change the data manually to see the graphics. Now actual device/server is disconnected because of Azure server being expensive..</Text>
+                    <Text align='left'>Sitting time counts every 1s for test usage. After 45s, warning pop up is set to up. Actual usage would be based on an hour as more linear, now it is based on second.</Text>
                   </TabPanel>
                 </TabPanels>
               </Tabs>

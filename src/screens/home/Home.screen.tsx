@@ -285,7 +285,7 @@ const Home = () => {
                   </TabPanel>
                   <TabPanel>
                     <Text align='left'>{" "}In Mockup Data Tab, you can change the data manually to see the graphics. Now actual device/server is disconnected because of Azure server being expensive..</Text>
-                    <Text align='left'>Sitting time counts every 1s for test usage. After 45s, warning pop up is set to up. Actual usage would be based on an hour as more linear, now it is based on second.</Text>
+                    <Text align='left'>Sitting time counts every 1s for test usage. After 45s, warning pop up is set to up. Sitting time counter is reset after 60s, which would be an hour in real life. Actual usage would be based on an hour as more linear, now it is based on second.</Text>
                   </TabPanel>
                 </TabPanels>
               </Tabs>

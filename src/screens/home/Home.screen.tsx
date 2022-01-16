@@ -68,10 +68,10 @@ const Home = () => {
   const toggle = () => setIsOpen(!isOpen);
 
   useEffect(() => {
-    localStorage.setItem("humidityHeight", values.humidityHeight);
-    localStorage.setItem("temperature", values.temperature);
-    localStorage.setItem("particle", values.particle);
-    localStorage.setItem("sittingTime", values.sittingTime);
+    sessionStorage.setItem("humidityHeight", values.humidityHeight);
+    sessionStorage.setItem("temperature", values.temperature);
+    sessionStorage.setItem("particle", values.particle);
+    sessionStorage.setItem("sittingTime", values.sittingTime);
   }, [values])
 
 
@@ -283,7 +283,7 @@ const Home = () => {
 
                   </TabPanel>
                   <TabPanel>
-                    <p>okja is cute dog</p>
+                    {/* <p>okja is cute dog</p> */}
                   </TabPanel>
                 </TabPanels>
               </Tabs>

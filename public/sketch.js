@@ -1,11 +1,13 @@
+/* eslint-disable */
+
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
 
 function preload() {
-  covid = loadImage('/assets/covid.png');
-  dust = loadImage('/assets/dust.png');
-  focus_image = loadImage('/assets/focus.png');
+  covid = loadImage("/assets/covid.png");
+  dust = loadImage("/assets/dust.png");
+  focus_image = loadImage("/assets/focus.png");
   font = loadFont("/assets/neodgm_pro.woff");
 }
 
@@ -18,7 +20,7 @@ class particle {
     this.posY = random(height);
     this.initialangle = random(0, 4 * PI);
     this.size = random(0, 5); // speed of particle somehow?
-    this.radius = sqrt(random(pow(width * 20 / 1, 2)));
+    this.radius = sqrt(random(pow((width * 20) / 1, 2)));
     this.update = function (time) {
       // x position follows a circle
       let w = 0.5; // angular speed
@@ -55,9 +57,7 @@ let yz = 500;
 
 // text noise helper
 function ns(x, y, z, scale_, min_, max_) {
-  return map(
-    noise(x * scale_, y * scale_, z * scale_),
-    0, 1, min_, max_);
+  return map(noise(x * scale_, y * scale_, z * scale_), 0, 1, min_, max_);
 }
 
 function setup() {
@@ -65,23 +65,21 @@ function setup() {
   cnv.position(0, 0);
 
   // font point arr
-  pts = font.textToPoints('#KeepTheBoxGreen', 24, 48, 50,
-    {
-      sampleFactor: 0.2,
-      simplifyThreshold: 0
-    });
+  pts = font.textToPoints("#KeepTheBoxGreen", 24, 48, 50, {
+    sampleFactor: 0.2,
+    simplifyThreshold: 0,
+  });
 }
 
 function draw() {
-  let temp = localStorage.getItem("temperature") // 25
-  let hum = localStorage.getItem("humidityHeight");
+  let temp = sessionStorage.getItem("temperature"); // 25
+  let hum = sessionStorage.getItem("humidityHeight");
   // red   (255, 0,   0, 255)
   // green (0,   255, 0, 255)
   // blue  (255, 255, 0, 255)
-  //          255           255        255       
+  //          255           255        255
   // background((temp * 10 - 200), (temp * 7.5), (temp * 5 - 100), 150);
-  background((temp * 12 - 300), (255 + 100 - temp * 7), (250 - temp * 10), 150);
-
+  background(temp * 12 - 300, 255 + 100 - temp * 7, 250 - temp * 10, 150);
 
   // wave
   fill(0, 0, hum * 200, hum * 200);
@@ -92,7 +90,7 @@ function draw() {
     // Calculate a y value according to noise, map to
     let y = map(noise(xoff, yoff), 0, 1, 200, 250);
     // height value from the form
-    vertex(x, y / localStorage.getItem("humidityHeight") * 2);
+    vertex(x, (y / sessionStorage.getItem("humidityHeight")) * 2);
     // Increment x dimension for noise
     xoff += 0.01;
   }
@@ -104,38 +102,46 @@ function draw() {
 
   // particle
   // fill(0, 0, 0, random(255));
-  const particleNum = localStorage.getItem("particle");
+  const particleNum = sessionStorage.getItem("particle");
 
   let t = frameCount / 6000; // update time
   // create a random number of particle each frame
   for (let i = 0; i < particleNum / 50; i++) {
-    particles.push(new particle())  // append particle object
+    particles.push(new particle()); // append particle object
   }
   // loop through particles with a for..of loop
   for (let particle of particles) {
-    particle.update(t * particleNum / 200); // update particle position
+    particle.update((t * particleNum) / 200); // update particle position
     particle.covidDisplay();
     particle.dustDisplay();
   }
 
   // sittingtime object
-  const sittingTime = localStorage.getItem("sittingTime");
+  const sittingTime = sessionStorage.getItem("sittingTime");
   imageMode(CENTER);
-  image(focus_image,
-    noise(millis() * .00005) * width + random((sittingTime / 10)),
-    noise(millis() * .00005) * height + random((sittingTime / 10)),
+  image(
+    focus_image,
+    noise(millis() * 0.00005) * width + random(sittingTime / 10),
+    noise(millis() * 0.00005) * height + random(sittingTime / 10),
     sittingTime * 7, // max 60 * 7 px
-    sittingTime * 7,
+    sittingTime * 7
   );
 
   // text morp
   // noStroke();
-  stroke(0, 0, 0, 120 - sittingTime * 2)
+  stroke(0, 0, 0, 120 - sittingTime * 2);
   fill(20, 120 + sittingTime * 3, 20, 120 - sittingTime * 2);
   push();
   // translate(24, height / 5);
   for (let i = 0; i < pts.length; i++) {
-    let xoff = ns(pts[i].x, pts[i].y, xz, 0.005, -50, abs(sin(millis() * .0005)) * 100);
+    let xoff = ns(
+      pts[i].x,
+      pts[i].y,
+      xz,
+      0.005,
+      -50,
+      abs(sin(millis() * 0.0005)) * 100
+    );
     let yoff = ns(pts[i].y, pts[i].x, yz, 0.005, -50, 50);
     rect(pts[i].x + xoff / 2, pts[i].y + yoff / 2, 4, 4);
   }

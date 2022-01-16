@@ -69,10 +69,10 @@ const Home = () => {
   const toggle = () => setIsOpen(!isOpen);
 
   useEffect(() => {
-    localStorage.setItem("humidityHeight", values.humidityHeight);
-    localStorage.setItem("temperature", values.temperature);
-    localStorage.setItem("particle", values.particle);
-    localStorage.setItem("sittingTime", values.sittingTime);
+    sessionStorage.setItem("humidityHeight", values.humidityHeight);
+    sessionStorage.setItem("temperature", values.temperature);
+    sessionStorage.setItem("particle", values.particle);
+    sessionStorage.setItem("sittingTime", values.sittingTime);
   }, [values])
 
 
@@ -284,8 +284,7 @@ const Home = () => {
 
                   </TabPanel>
                   <TabPanel>
-                    <Text align='left'>{" "}In Mockup Data Tab, you can change the data manually to see the graphics. Now actual device/server is disconnected because of Azure server being expensive..</Text>
-                    <Text align='left'>Sitting time counts every 1s for test usage. After 45s, warning pop up is set to up. Sitting time counter is reset after 60s, which would be an hour in real life. Actual usage would be based on an hour as more linear, now it is based on second.</Text>
+                    {/* <p>okja is cute dog</p> */}
                   </TabPanel>
                 </TabPanels>
               </Tabs>
